@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://bo6imvj2gix88"]
+
+[ext_resource type="Script" uid="uid://cbiliyt80153u" path="res://source/dialogue_system/dialogue_area_2d.gd" id="1_jvc3a"]
+[ext_resource type="Resource" uid="uid://cknwgdt5irmtd" path="res://source/dialogues/npc1.tres" id="2_go2oq"]
+
+[node name="DialogueArea2D" type="Area2D"]
+script = ExtResource("1_jvc3a")
+dialogue_container = ExtResource("2_go2oq")

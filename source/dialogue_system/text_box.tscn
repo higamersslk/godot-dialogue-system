@@ -1,0 +1,40 @@
+[gd_scene load_steps=3 format=3 uid="uid://dytsj61wrt3tv"]
+
+[ext_resource type="Script" uid="uid://xs6phn7rr8dh" path="res://source/dialogue_system/text_box.gd" id="1_6gbj5"]
+[ext_resource type="Texture2D" uid="uid://dje1ux65kgdt1" path="res://assets/UI/button.png" id="1_c5ny8"]
+
+[node name="DialogueTextBox" type="MarginContainer"]
+clip_contents = true
+offset_right = 42.0
+offset_bottom = 32.0
+size_flags_horizontal = 4
+script = ExtResource("1_6gbj5")
+
+[node name="Background" type="NinePatchRect" parent="."]
+layout_mode = 2
+texture = ExtResource("1_c5ny8")
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="Label" type="RichTextLabel" parent="MarginContainer"]
+layout_mode = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 10
+bbcode_enabled = true
+text = "testing"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+vertical_alignment = 1
+visible_characters_behavior = 1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]

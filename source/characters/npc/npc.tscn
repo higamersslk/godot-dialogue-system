@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://f2ykjxmkwan8"]
+
+[ext_resource type="PackedScene" uid="uid://0aqesxss6tv7" path="res://source/characters/character.tscn" id="1_wdgi6"]
+[ext_resource type="Script" uid="uid://cbdm2jr1vqqub" path="res://source/characters/npc/npc.gd" id="2_pi641"]
+[ext_resource type="PackedScene" uid="uid://bo6imvj2gix88" path="res://source/dialogue_system/dialogue_area_2d.tscn" id="3_7qyj0"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ykq3f"]
+radius = 29.6142
+
+[node name="Npc" instance=ExtResource("1_wdgi6")]
+script = ExtResource("2_pi641")
+
+[node name="CollisionShape2D" parent="." index="1"]
+visible = false
+
+[node name="DialogueArea2D" parent="." index="2" instance=ExtResource("3_7qyj0")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DialogueArea2D" index="0"]
+position = Vector2(0, 10)
+shape = SubResource("CircleShape2D_ykq3f")

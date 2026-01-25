@@ -1,0 +1,45 @@
+[gd_scene load_steps=5 format=3 uid="uid://d3ivlx4l0e0nv"]
+
+[ext_resource type="Texture2D" uid="uid://b3i4327wln14b" path="res://icon.svg" id="1_0xm2m"]
+[ext_resource type="Script" uid="uid://da4emi6y0hqdn" path="res://main.gd" id="1_1bvp3"]
+[ext_resource type="PackedScene" uid="uid://c5o6uenpbatt4" path="res://source/characters/player/player.tscn" id="1_ig7tw"]
+[ext_resource type="PackedScene" uid="uid://f2ykjxmkwan8" path="res://source/characters/npc/npc.tscn" id="3_h2yge"]
+
+[node name="Main" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("1_1bvp3")
+
+[node name="Icon" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(562.5, 239)
+scale = Vector2(4.44531, 2.51562)
+texture = ExtResource("1_0xm2m")
+
+[node name="Player" parent="." instance=ExtResource("1_ig7tw")]
+position = Vector2(559, 237)
+slide_on_ceiling = false
+
+[node name="Control" type="Control" parent="Player"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -559.0
+offset_top = -237.0
+offset_right = -519.0
+offset_bottom = -197.0
+
+[node name="OptionButton" type="OptionButton" parent="Player/Control"]
+layout_mode = 0
+offset_left = 278.0
+offset_top = 90.0
+offset_right = 310.0
+offset_bottom = 110.0
+selected = 0
+item_count = 2
+popup/item_0/text = "en"
+popup/item_0/id = 0
+popup/item_1/text = "pt"
+popup/item_1/id = 1
+
+[node name="Npc" parent="." instance=ExtResource("3_h2yge")]
+position = Vector2(454, 185)
+script = null

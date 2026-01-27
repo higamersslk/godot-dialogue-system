@@ -1,9 +1,8 @@
-[gd_resource type="Resource" script_class="DialogueContainer" load_steps=10 format=3 uid="uid://cknwgdt5irmtd"]
+[gd_resource type="Resource" script_class="DialogueContainer" load_steps=9 format=3 uid="uid://cknwgdt5irmtd"]
 
 [ext_resource type="Script" uid="uid://c6i6he7s4mhfh" path="res://source/dialogue_system/resources/blocks/text_block.gd" id="1_8osrp"]
 [ext_resource type="Script" uid="uid://dhpy5ov3djth2" path="res://source/dialogue_system/resources/dialogue_container.gd" id="1_244a3"]
 [ext_resource type="Script" uid="uid://dua435a2vshxx" path="res://source/dialogue_system/resources/blocks/jump_block.gd" id="2_8osrp"]
-[ext_resource type="Script" uid="uid://b7berss7lrkno" path="res://source/dialogue_system/resources/blocks/function_block.gd" id="2_qht1y"]
 
 [sub_resource type="Resource" id="Resource_px1os"]
 script = ExtResource("1_8osrp")
@@ -13,13 +12,10 @@ text_speed = 10.0
 randomize_dialogue = false
 metadata/_custom_type_script = "uid://c6i6he7s4mhfh"
 
-[sub_resource type="Resource" id="Resource_bedcy"]
-script = ExtResource("2_qht1y")
-method_type = 0
-node_path = NodePath("../AnimatedSprite2D")
-method_name = "play"
-args = ["walk_side"]
-metadata/_custom_type_script = "uid://b7berss7lrkno"
+[sub_resource type="Resource" id="Resource_8osrp"]
+script = ExtResource("2_8osrp")
+goto_label = &"test"
+metadata/_custom_type_script = "uid://dua435a2vshxx"
 
 [sub_resource type="Resource" id="Resource_fngix"]
 script = ExtResource("1_8osrp")
@@ -46,7 +42,7 @@ metadata/_custom_type_script = "uid://dua435a2vshxx"
 script = ExtResource("1_244a3")
 insta_dialogue = false
 dialogues = Dictionary[StringName, Array]({
-&"block_2": [SubResource("Resource_px1os"), SubResource("Resource_bedcy")],
+&"block_2": [SubResource("Resource_px1os"), SubResource("Resource_8osrp")],
 &"start": [SubResource("Resource_fngix"), SubResource("Resource_13lsm"), SubResource("Resource_qht1y")]
 })
 metadata/_custom_type_script = "uid://dhpy5ov3djth2"

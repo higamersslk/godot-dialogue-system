@@ -2,10 +2,8 @@ class_name DialogueBlock
 extends Resource
 ## Base class for dialogue resources
 
-@warning_ignore("unused_signal")
 signal finished
 
 
-func start() -> void:
+func execute(_dialogue_manager: DialogueManager) -> void:
     finished.emit()
-    pass

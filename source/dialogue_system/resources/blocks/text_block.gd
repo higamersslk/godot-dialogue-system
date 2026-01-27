@@ -11,11 +11,11 @@ extends DialogueBlock
 @export var randomize_dialogue: bool
 
 
-func start() -> void:
-    ## TO DO:
-    ## Display letter by letter instead of full text.
+func execute(manager: DialogueManager) -> void:
+    manager.show_text_box()
     for text: String in dialogues_text:
-        DialogueSystem.text_box.label_text = text
-        await DialogueSystem.text_box.continue_interact
+        manager.text_box.label_text = text
+        await manager.text_box.continue_interact
     
+    manager.hide_text_box()
     finished.emit()

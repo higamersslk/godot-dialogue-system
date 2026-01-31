@@ -65,5 +65,5 @@ func _instantiate_text_box() -> void:
 	text_box.visible = false
 
 	var dialogue_area: DialogueArea2D = context["dialogue_area"]
-	text_box.position = dialogue_area.position + Vector2(0, -50)
+	text_box.position = to_local(dialogue_area.global_position + Vector2(0, -50))
 	dialogue_area.add_child(text_box)

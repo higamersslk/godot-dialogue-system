@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="DialogueContainer" load_steps=9 format=3 uid="uid://cknwgdt5irmtd"]
+[gd_resource type="Resource" script_class="DialogueContainer" load_steps=10 format=3 uid="uid://cknwgdt5irmtd"]
 
 [ext_resource type="Script" uid="uid://c6i6he7s4mhfh" path="res://source/dialogue_system/resources/blocks/text_block.gd" id="1_8osrp"]
 [ext_resource type="Script" uid="uid://dhpy5ov3djth2" path="res://source/dialogue_system/resources/dialogue_container.gd" id="1_244a3"]
@@ -7,7 +7,7 @@
 [sub_resource type="Resource" id="Resource_px1os"]
 script = ExtResource("1_8osrp")
 dialogues_text = Array[String](["This is the label  \"block_2\"! Here we gonna see DialogueFunctionBlock in action,", "we gonna run a side walk animation in the npc you're talking to.", "so lets try NOOOOOOW!"])
-dialogues_audio = Array[AudioEffect]([])
+dialogues_audio = Array[AudioStream]([])
 text_speed = 10.0
 randomize_dialogue = false
 metadata/_custom_type_script = "uid://c6i6he7s4mhfh"
@@ -19,16 +19,16 @@ metadata/_custom_type_script = "uid://dua435a2vshxx"
 
 [sub_resource type="Resource" id="Resource_fngix"]
 script = ExtResource("1_8osrp")
-dialogues_text = Array[String](["Greetings stranger!", "this is a dialogue text block", "you can create long conversations using this block.", "and this also support BB code and multiple audios!", "but lets see the next block."])
-dialogues_audio = Array[AudioEffect]([])
-text_speed = 0.0
+dialogues_text = Array[String](["[wave amp=30.0 freq=10.0]Greetings[/wave] stranger!", "this is a dialogue text block", "you can create long conversations using this block.", "and this also support BB code and multiple audios!", "but lets see the next block."])
+dialogues_audio = Array[AudioStream]([])
+text_speed = 1.0
 randomize_dialogue = false
 metadata/_custom_type_script = "uid://c6i6he7s4mhfh"
 
 [sub_resource type="Resource" id="Resource_13lsm"]
 script = ExtResource("1_8osrp")
 dialogues_text = Array[String](["this is another text block!", "every text block has it own logic separated from the core system.", "you can create many block as you want without changing the core code.", "now we gonna change the label.", "remember that labels are different blocks array in the dialogue container", "every label has it own blocks logic.", "and you can add as many block as you want.", "you can change the current label context calling the DialogueJumpBlock", "so lets jump label now!!!!!"])
-dialogues_audio = Array[AudioEffect]([])
+dialogues_audio = Array[AudioStream]([])
 text_speed = 0.0
 randomize_dialogue = false
 metadata/_custom_type_script = "uid://c6i6he7s4mhfh"
@@ -38,11 +38,19 @@ script = ExtResource("2_8osrp")
 goto_label = &"block_2"
 metadata/_custom_type_script = "uid://dua435a2vshxx"
 
+[sub_resource type="Resource" id="Resource_bedcy"]
+script = ExtResource("1_8osrp")
+dialogues_text = Array[String](["Hello stranger!", "Are you a stranger?", "I've never see someones like you here.", "Random dialogues is all i can say...", "I wish i had real dialogues instead of randomized [wave amp=50.0 freq=10.0]s###[/wave]"])
+dialogues_audio = Array[AudioStream]([])
+text_speed = 1.0
+randomize_dialogue = true
+metadata/_custom_type_script = "uid://c6i6he7s4mhfh"
+
 [resource]
 script = ExtResource("1_244a3")
-insta_dialogue = false
 dialogues = Dictionary[StringName, Array]({
 &"block_2": [SubResource("Resource_px1os"), SubResource("Resource_8osrp")],
+&"random_dialogue": [SubResource("Resource_bedcy")],
 &"start": [SubResource("Resource_fngix"), SubResource("Resource_13lsm"), SubResource("Resource_qht1y")]
 })
 metadata/_custom_type_script = "uid://dhpy5ov3djth2"

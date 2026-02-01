@@ -1,9 +1,18 @@
-[gd_scene load_steps=5 format=3 uid="uid://d3ivlx4l0e0nv"]
+[gd_scene load_steps=10 format=3 uid="uid://d3ivlx4l0e0nv"]
 
 [ext_resource type="Texture2D" uid="uid://b3i4327wln14b" path="res://icon.svg" id="1_0xm2m"]
 [ext_resource type="Script" uid="uid://da4emi6y0hqdn" path="res://main.gd" id="1_1bvp3"]
 [ext_resource type="PackedScene" uid="uid://c5o6uenpbatt4" path="res://source/characters/player/player.tscn" id="1_ig7tw"]
 [ext_resource type="PackedScene" uid="uid://f2ykjxmkwan8" path="res://source/characters/npc/npc.tscn" id="3_h2yge"]
+[ext_resource type="Script" uid="uid://cbiliyt80153u" path="res://source/dialogue_system/dialogue_area_2d.gd" id="5_lquwl"]
+[ext_resource type="PackedScene" uid="uid://dytsj61wrt3tv" path="res://source/dialogue_system/text_box.tscn" id="6_272bh"]
+[ext_resource type="Resource" uid="uid://cknwgdt5irmtd" path="res://source/dialogues/npc1.tres" id="7_5vw27"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7mycd"]
+radius = 27.4591
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lquwl"]
+size = Vector2(41, 30)
 
 [node name="Main" type="Node2D"]
 y_sort_enabled = true
@@ -43,3 +52,32 @@ popup/item_1/id = 1
 [node name="Npc" parent="." instance=ExtResource("3_h2yge")]
 position = Vector2(454, 185)
 script = null
+
+[node name="DialogueArea2D" type="Area2D" parent="Npc"]
+script = ExtResource("5_lquwl")
+entry_label = &"start"
+insta_dialogue = true
+text_box = ExtResource("6_272bh")
+dialogue_container = ExtResource("7_5vw27")
+metadata/_custom_type_script = "uid://cbiliyt80153u"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Npc/DialogueArea2D"]
+position = Vector2(0, 10)
+shape = SubResource("CircleShape2D_7mycd")
+
+[node name="Npc2" parent="." instance=ExtResource("3_h2yge")]
+position = Vector2(592, 175)
+script = null
+
+[node name="DialogueArea2D2" type="Area2D" parent="Npc2"]
+position = Vector2(0, 4)
+script = ExtResource("5_lquwl")
+entry_label = &"random_dialogue"
+insta_dialogue = true
+text_box = ExtResource("6_272bh")
+dialogue_container = ExtResource("7_5vw27")
+metadata/_custom_type_script = "uid://cbiliyt80153u"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Npc2/DialogueArea2D2"]
+position = Vector2(-1, 15)
+shape = SubResource("RectangleShape2D_lquwl")

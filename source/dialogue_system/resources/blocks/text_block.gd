@@ -21,7 +21,6 @@ func execute(manager: DialogueManager) -> void:
 	if randomize_dialogue:
 		var total_dialogues: int = dialogues_text.size()
 		var random_num: int = randi() % total_dialogues
-		print(random_num)
 		text_box.display_text(dialogues_text[random_num], text_speed)
 		await text_box.text_finished
 		await text_box.continue_next

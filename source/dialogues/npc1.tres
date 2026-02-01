@@ -40,7 +40,7 @@ metadata/_custom_type_script = "uid://dua435a2vshxx"
 
 [sub_resource type="Resource" id="Resource_bedcy"]
 script = ExtResource("1_8osrp")
-dialogues_text = Array[String](["Hello stranger!", "Are you a stranger?", "I've never see someones like you here.", "Random dialogues is all i can say...", "I wish i had real dialogues instead of randomized [wave amp=50.0 freq=10.0]s###[/wave]"])
+dialogues_text = Array[String](["Have you read about that [url=sword]sword[/url]?", "Mann, i miss my [url=cat]cat[/url].", "I hope u never step close that [url=old_lady]old lady[/url], shes somehow so annoying."])
 dialogues_audio = Array[AudioStream]([])
 text_speed = 1.0
 randomize_dialogue = true

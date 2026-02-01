@@ -1,0 +1,74 @@
+[gd_scene load_steps=3 format=3 uid="uid://dytsj61wrt3tv"]
+
+[ext_resource type="Script" uid="uid://xs6phn7rr8dh" path="res://source/dialogue_system/UI/text_box.gd" id="1_6gbj5"]
+[ext_resource type="Texture2D" uid="uid://dje1ux65kgdt1" path="res://assets/UI/button.png" id="1_c5ny8"]
+
+[node name="DialogueTextBox" type="MarginContainer"]
+offset_right = 42.0
+offset_bottom = 32.0
+size_flags_horizontal = 4
+script = ExtResource("1_6gbj5")
+
+[node name="Background" type="NinePatchRect" parent="."]
+layout_mode = 2
+texture = ExtResource("1_c5ny8")
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="Label" type="RichTextLabel" parent="MarginContainer"]
+layout_mode = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 10
+bbcode_enabled = true
+text = "testing"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+vertical_alignment = 1
+
+[node name="TextInfo" type="Control" parent="."]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="TextInfo"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -24.0
+offset_right = -22.0
+offset_bottom = -36.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="NinePatchRect" type="Panel" parent="TextInfo/MarginContainer"]
+layout_mode = 2
+
+[node name="InfoContainer" type="MarginContainer" parent="TextInfo/MarginContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
+
+[node name="InfoLabel" type="RichTextLabel" parent="TextInfo/MarginContainer/InfoContainer"]
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 10
+bbcode_enabled = true
+text = "[color=red]this sword is black"
+fit_content = true
+scroll_active = false
+autowrap_mode = 0
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]

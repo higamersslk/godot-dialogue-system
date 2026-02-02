@@ -21,14 +21,6 @@ func _ready() -> void:
 	body_exited.connect(_on_body_exited)
 
 
-func _unhandled_input(event: InputEvent) -> void:
-	if not event.is_action_pressed("chat"): return
-	if not _is_inside_area: return
-	if _dialogue_manager: return
-
-	_start_dialogue()
-
-
 func _on_body_entered(body: Node) -> void:
 	if body is not Player: return
 	if not dialogue_container or not text_box: return

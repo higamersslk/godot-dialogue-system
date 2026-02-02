@@ -1,17 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://d3ivlx4l0e0nv"]
+[gd_scene load_steps=4 format=3 uid="uid://d3ivlx4l0e0nv"]
 
 [ext_resource type="Texture2D" uid="uid://b3i4327wln14b" path="res://icon.svg" id="1_s8x7u"]
 [ext_resource type="PackedScene" uid="uid://c5o6uenpbatt4" path="res://source/characters/player/player.tscn" id="2_4naa1"]
 [ext_resource type="PackedScene" uid="uid://f2ykjxmkwan8" path="res://source/characters/npc/npc.tscn" id="3_1elff"]
-[ext_resource type="Script" uid="uid://cbiliyt80153u" path="res://source/dialogue_system/dialogue_area_2d.gd" id="4_2uit2"]
-[ext_resource type="PackedScene" uid="uid://dytsj61wrt3tv" path="res://source/dialogue_system/UI/text_box.tscn" id="5_rewae"]
-[ext_resource type="Resource" uid="uid://cknwgdt5irmtd" path="res://source/dialogues/npc1.tres" id="6_d5d55"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_7mycd"]
-radius = 27.4591
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_lquwl"]
-size = Vector2(41, 30)
 
 [node name="Main" type="Node2D"]
 y_sort_enabled = true
@@ -29,32 +20,3 @@ slide_on_ceiling = false
 [node name="Npc" parent="." instance=ExtResource("3_1elff")]
 position = Vector2(454, 185)
 script = null
-
-[node name="DialogueArea2D" type="Area2D" parent="Npc"]
-script = ExtResource("4_2uit2")
-entry_label = &"start"
-insta_dialogue = true
-text_box = ExtResource("5_rewae")
-dialogue_container = ExtResource("6_d5d55")
-metadata/_custom_type_script = "uid://cbiliyt80153u"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Npc/DialogueArea2D"]
-position = Vector2(0, 10)
-shape = SubResource("CircleShape2D_7mycd")
-
-[node name="Npc2" parent="." instance=ExtResource("3_1elff")]
-position = Vector2(592, 175)
-script = null
-
-[node name="DialogueArea2D2" type="Area2D" parent="Npc2"]
-position = Vector2(0, 4)
-script = ExtResource("4_2uit2")
-entry_label = &"random_dialogue"
-insta_dialogue = true
-text_box = ExtResource("5_rewae")
-dialogue_container = ExtResource("6_d5d55")
-metadata/_custom_type_script = "uid://cbiliyt80153u"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Npc2/DialogueArea2D2"]
-position = Vector2(-1, 15)
-shape = SubResource("RectangleShape2D_lquwl")

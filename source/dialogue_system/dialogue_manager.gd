@@ -32,7 +32,6 @@ func start_dialogue(dialogue_container: DialogueContainer) -> void:
 
 
 func end_dialogue() -> void:
-	text_box.queue_free()
 	dialogue_ended.emit()
 
 
@@ -66,4 +65,4 @@ func _instantiate_text_box() -> void:
 
 	var dialogue_area: DialogueArea2D = context["dialogue_area"]
 	text_box.position = to_local(dialogue_area.global_position + Vector2(0, -50))
-	dialogue_area.add_child(text_box)
+	add_child(text_box)

@@ -2,7 +2,7 @@ class_name DialogueContainer
 extends Resource
 
 
-## Dictionary mapping dialogue labels to block arrays.
-## [br]
-## Format: {StringName: Array(DialogueBlock)}
-@export var dialogues: Dictionary[StringName, Array] = {"start": []}
+## Conversation topics for this dialogue container. [br]
+## [b]Key:[/b] Topic ID, used to jump between topics. [br]
+## [b]Value:[/b] Array of DialogueNode resources executed in sequence.
+@export var topics: Dictionary[StringName, Array]

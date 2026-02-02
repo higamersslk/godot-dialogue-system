@@ -1,6 +1,7 @@
-class_name DialogueBlock
+## Base class for Dialogue Resources.
+class_name DialogueNode
 extends Resource
-## Base class for dialogue resources
+
 
 signal finished
 

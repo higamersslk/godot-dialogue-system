@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://chwu0k21b2kdw"]
+
+[ext_resource type="Texture2D" uid="uid://c3wd1rabmkont" path="res://assets/UI/exclamation_button.png" id="1_y6vnn"]
+[ext_resource type="Texture2D" uid="uid://c4ad5x5l8s35k" path="res://assets/UI/exclamation_button_pressed.png" id="2_482im"]
+
+[node name="DialogueHint" type="TouchScreenButton"]
+scale = Vector2(0.421875, 0.4375)
+texture_normal = ExtResource("1_y6vnn")
+texture_pressed = ExtResource("2_482im")
+action = "chat"

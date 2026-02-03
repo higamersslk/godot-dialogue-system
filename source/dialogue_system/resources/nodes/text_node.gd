@@ -13,25 +13,49 @@ extends DialogueNode
 ## Sets to false if want linear text displaying.
 @export var randomize_dialogue: bool
 
+var _current_text_index: int
+
 
 func execute(manager: DialogueManager) -> void:
-	#if dialogues_text.is_empty():
-	finished.emit()
-	#	return
+	_current_text_index = -1
+	_cancelled = false
 
-	#manager.show_text_box()
-	#var text_box: TextBox = manager.text_box
-	#if randomize_dialogue:
-	#	var total_dialogues: int = dialogues_text.size()
-	#	var random_num: int = randi() % total_dialogues
-	#	text_box.display_text(dialogues_text[random_num], text_speed)
-	#	await text_box.text_finished
-	#	await text_box.continue_next
-	#else:
-	#	for text: String in dialogues_text:
-	#		text_box.display_text(text, text_speed)
-	#		await text_box.text_finished
-	#		await text_box.continue_next
+	if randomize_dialogue:
+		_display_random_text(manager)
+	else:
+		_display_linear_text(manager)
+
+
+func _on_text_finished(manager: DialogueManager) -> void:
+	if _cancelled: return
 	
-	#manager.hide_text_box()
-	#finished.emit()
+	if randomize_dialogue:
+		manager.continue_next.connect(finished.emit, CONNECT_ONE_SHOT)
+	else:
+		manager.continue_next.connect(_display_linear_text.bind(manager), CONNECT_ONE_SHOT)
+
+
+func _display_linear_text(manager: DialogueManager) -> void:
+	var dialogue_box: DialogueTextBox = manager.dialogue_box
+
+	_current_text_index += 1
+	if _current_text_index >= dialogues_text.size():
+		dialogue_box.hide()
+		finished.emit()
+		return
+	
+	var text: String = dialogues_text[_current_text_index]
+
+	dialogue_box.show()
+	dialogue_box.display_text(text, text_speed)
+	dialogue_box.text_finished.connect(_on_text_finished.bind(manager), CONNECT_ONE_SHOT)
+
+
+func _display_random_text(manager: DialogueManager) -> void:
+	var dialogue_box: DialogueTextBox = manager.dialogue_box
+	var random_num: int = randi() % dialogues_text.size()
+	var text: String = dialogues_text[random_num]
+
+	dialogue_box.show()
+	dialogue_box.display_text(text, text_speed)
+	dialogue_box.text_finished.connect(_on_text_finished.bind(manager), CONNECT_ONE_SHOT)

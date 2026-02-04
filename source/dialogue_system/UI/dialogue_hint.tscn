@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://c4ad5x5l8s35k" path="res://assets/UI/exclamation_button_pressed.png" id="2_482im"]
 
 [node name="DialogueHint" type="TouchScreenButton"]
+position = Vector2(-13.5, -13.5)
 scale = Vector2(0.421875, 0.4375)
 texture_normal = ExtResource("1_y6vnn")
 texture_pressed = ExtResource("2_482im")

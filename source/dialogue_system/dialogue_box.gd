@@ -13,7 +13,7 @@ var _current_tween: Tween
 
 
 func display_text(text: String, text_speed: float) -> void:
-	dialogue_label.text = text
+	dialogue_label.text = tr(text)
 	dialogue_label.visible_characters = 0
 	is_typing = true
 

@@ -1,0 +1,50 @@
+[gd_resource type="Resource" script_class="DialogueContainer" load_steps=10 format=3 uid="uid://dywnjlebfv2sh"]
+
+[ext_resource type="Script" uid="uid://dhpy5ov3djth2" path="res://source/dialogue_system/resources/dialogue_container.gd" id="1_6stri"]
+[ext_resource type="Script" uid="uid://c6i6he7s4mhfh" path="res://source/dialogue_system/resources/nodes/text_node.gd" id="2_00g5s"]
+[ext_resource type="Script" uid="uid://dua435a2vshxx" path="res://source/dialogue_system/resources/nodes/goto_node.gd" id="3_w3w1i"]
+[ext_resource type="Script" uid="uid://7e7cgug2sk30" path="res://source/dialogue_system/resources/nodes/method_node.gd" id="4_kap1y"]
+
+[sub_resource type="Resource" id="Resource_v05ye"]
+script = ExtResource("2_00g5s")
+dialogues_text = PackedStringArray("GREETINGS", "NODE_TALK_1", "NODE_TALK_2", "NODE_TALK_3", "NODE_TALK_4", "NODE_TALK_5", "NODE_TALK_6", "NODE_TALK_7", "NODE_TALK_8", "NODE_TALK_9", "NODE_TALK_10", "NODE_TALK_11", "NODE_TALK_12", "NODE_TALK_13", "NODE_TALK_14")
+dialogues_audio = Array[AudioStream]([])
+text_speed = 1.0
+randomize_dialogue = false
+metadata/_custom_type_script = "uid://c6i6he7s4mhfh"
+
+[sub_resource type="Resource" id="Resource_k83sk"]
+script = ExtResource("2_00g5s")
+dialogues_text = PackedStringArray("NODE_TALK_15", "NODE_TALK_16", "NODE_TALK_17", "NODE_TALK_18", "NODE_TALK_19", "NODE_TALK_20", "NODE_TALK_21", "NODE_TALK_22", "NODE_TALK_23", "NODE_TALK_24", "NODE_TALK_25")
+dialogues_audio = Array[AudioStream]([])
+text_speed = 1.0
+randomize_dialogue = false
+metadata/_custom_type_script = "uid://c6i6he7s4mhfh"
+
+[sub_resource type="Resource" id="Resource_nnqi3"]
+script = ExtResource("3_w3w1i")
+goto_id = &"TOPIC_2"
+goto_index = 0
+metadata/_custom_type_script = "uid://dua435a2vshxx"
+
+[sub_resource type="Resource" id="Resource_piofn"]
+script = ExtResource("2_00g5s")
+dialogues_text = PackedStringArray("TOPIC_TALK_1", "TOPIC_TALK_2", "TOPIC_TALK_3", "TOPIC_TALK_4", "TOPIC_TALK_5", "TOPIC_TALK_6", "TOPIC_TALK_7")
+dialogues_audio = Array[AudioStream]([])
+text_speed = 1.0
+randomize_dialogue = false
+metadata/_custom_type_script = "uid://c6i6he7s4mhfh"
+
+[sub_resource type="Resource" id="Resource_1d82h"]
+script = ExtResource("4_kap1y")
+method_name = "play_animation"
+arguments = PackedStringArray("walk_side")
+metadata/_custom_type_script = "uid://7e7cgug2sk30"
+
+[resource]
+script = ExtResource("1_6stri")
+topics = Dictionary[StringName, Array]({
+&"TOPIC_2": [SubResource("Resource_piofn"), SubResource("Resource_1d82h")],
+&"start": [SubResource("Resource_v05ye"), SubResource("Resource_k83sk"), SubResource("Resource_nnqi3")]
+})
+metadata/_custom_type_script = "uid://dhpy5ov3djth2"

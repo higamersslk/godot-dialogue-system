@@ -10,10 +10,11 @@ signal text_finished
 
 var is_typing: bool
 var _current_tween: Tween
-
+var _current_text: String = ""
 
 func display_text(text: String, text_speed: float) -> void:
-	dialogue_label.text = tr(text)
+	_current_text = text
+	dialogue_label.text = tr(_current_text)
 	dialogue_label.visible_characters = 0
 	is_typing = true
 
@@ -38,3 +39,9 @@ func skip_typing() -> void:
 func _on_tween_end() -> void:
 	is_typing = false
 	text_finished.emit()
+
+
+func _notification(what: int) -> void:
+	if not is_typing: return
+	if what == NOTIFICATION_TRANSLATION_CHANGED:
+		dialogue_label.text = str(_current_text)

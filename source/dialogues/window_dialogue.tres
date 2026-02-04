@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="DialogueContainer" load_steps=4 format=3 uid="uid://b2exrs0hkfgsf"]
+
+[ext_resource type="Script" uid="uid://dhpy5ov3djth2" path="res://source/dialogue_system/resources/dialogue_container.gd" id="1_53jes"]
+[ext_resource type="Script" uid="uid://c6i6he7s4mhfh" path="res://source/dialogue_system/resources/nodes/text_node.gd" id="2_57kuo"]
+
+[sub_resource type="Resource" id="Resource_5snmy"]
+script = ExtResource("2_57kuo")
+dialogues_text = PackedStringArray("Seems like theres a family having dinner. cool...", "The view you see on window, fills you with determination...", "You see a beatifull family.", "This dialogue is not being translated.")
+dialogues_audio = Array[AudioStream]([])
+text_speed = 1.0
+randomize_dialogue = true
+metadata/_custom_type_script = "uid://c6i6he7s4mhfh"
+
+[resource]
+script = ExtResource("1_53jes")
+topics = Dictionary[StringName, Array]({
+&"start": [SubResource("Resource_5snmy")]
+})
+metadata/_custom_type_script = "uid://dhpy5ov3djth2"

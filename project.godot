@@ -50,7 +50,7 @@ interact={
 
 [internationalization]
 
-locale/translations=PackedStringArray("res://assets/translations/npc1.en.translation", "res://assets/translations/npc1.pt.translation")
+locale/translations=PackedStringArray("res://assets/translations/introduction_dialogue.en.translation", "res://assets/translations/introduction_dialogue.es.translation", "res://assets/translations/introduction_dialogue.pt.translation", "res://assets/translations/introduction_dialogue.fr.translation")
 
 [rendering]
 

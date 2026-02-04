@@ -1,10 +1,57 @@
-[gd_scene load_steps=3 format=4 uid="uid://d3ivlx4l0e0nv"]
+[gd_scene load_steps=18 format=4 uid="uid://d3ivlx4l0e0nv"]
 
+[ext_resource type="Script" uid="uid://btciwne160d61" path="res://source/main.gd" id="1_d5d55"]
 [ext_resource type="TileSet" uid="uid://s07gfp3hy7ss" path="res://source/tilesets/tileset.tres" id="1_kaxhg"]
 [ext_resource type="PackedScene" uid="uid://c5o6uenpbatt4" path="res://source/characters/player/player.tscn" id="2_4naa1"]
+[ext_resource type="Texture2D" uid="uid://3flvr4nx7ybg" path="res://assets/flags/us.png" id="2_7rnte"]
+[ext_resource type="PackedScene" uid="uid://f2ykjxmkwan8" path="res://source/characters/npc/npc.tscn" id="3_1elff"]
+[ext_resource type="Texture2D" uid="uid://g5wyracw4dx5" path="res://assets/flags/br.png" id="3_nfm2e"]
+[ext_resource type="Texture2D" uid="uid://nxnowpa4eh22" path="res://assets/flags/es.png" id="4_ks00e"]
+[ext_resource type="Script" uid="uid://vcl81unt6qpp" path="res://source/dialogue_system/dialogue_manager.gd" id="4_s8x7u"]
+[ext_resource type="Texture2D" uid="uid://dq6wuhg6fsw6y" path="res://assets/flags/fr.png" id="5_k04uo"]
+[ext_resource type="Resource" uid="uid://b2exrs0hkfgsf" path="res://source/dialogues/window_dialogue.tres" id="5_s8x7u"]
+[ext_resource type="PackedScene" uid="uid://cfdruqc4hmosh" path="res://source/dialogue_system/UI/screen_dialogue_box.tscn" id="6_1elff"]
+[ext_resource type="PackedScene" uid="uid://diltyur28vmew" path="res://source/dialogue_system/UI/dialogue_text_box.tscn" id="6_s8x7u"]
+[ext_resource type="Script" uid="uid://cbiliyt80153u" path="res://source/dialogue_system/dialogue_area_2d.gd" id="7_1elff"]
+[ext_resource type="PackedScene" uid="uid://chwu0k21b2kdw" path="res://source/dialogue_system/UI/dialogue_hint.tscn" id="8_2uit2"]
+[ext_resource type="Resource" uid="uid://dywnjlebfv2sh" path="res://source/dialogues/introduction_dialogue.tres" id="9_rewae"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4naa1"]
+size = Vector2(56, 19)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rewae"]
+radius = 29.0172
 
 [node name="Main" type="Node2D"]
 y_sort_enabled = true
+script = ExtResource("1_d5d55")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="LanguageSwitcher" type="OptionButton" parent="CanvasLayer"]
+offset_left = 23.0
+offset_top = 33.0
+offset_right = 123.0
+offset_bottom = 83.0
+alignment = 1
+expand_icon = true
+selected = 0
+item_count = 4
+popup/item_0/text = "en"
+popup/item_0/icon = ExtResource("2_7rnte")
+popup/item_0/id = 0
+popup/item_1/text = "pt"
+popup/item_1/icon = ExtResource("3_nfm2e")
+popup/item_1/id = 1
+popup/item_2/text = "es"
+popup/item_2/icon = ExtResource("4_ks00e")
+popup/item_2/id = 2
+popup/item_3/text = "fr"
+popup/item_3/icon = ExtResource("5_k04uo")
+popup/item_3/id = 3
+
+[node name="Player" parent="." instance=ExtResource("2_4naa1")]
+position = Vector2(575, 372)
 
 [node name="WorldTiles" type="Node2D" parent="."]
 y_sort_enabled = true
@@ -81,5 +128,47 @@ position = Vector2(2, 6)
 tile_map_data = PackedByteArray("AAABAAEAAwAEAAQAAAD+/wEAAwAEAAQAAAA=")
 tile_set = ExtResource("1_kaxhg")
 
-[node name="Player" parent="." instance=ExtResource("2_4naa1")]
-position = Vector2(575, 372)
+[node name="window_interaction" type="Node" parent="."]
+
+[node name="DialogueArea2D" type="Area2D" parent="window_interaction"]
+position = Vector2(421, 245)
+script = ExtResource("7_1elff")
+interaction_hint = ExtResource("8_2uit2")
+hint_position_offset = Vector2(0, -50)
+metadata/_custom_type_script = "uid://cbiliyt80153u"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="window_interaction/DialogueArea2D"]
+position = Vector2(-1, -0.5)
+shape = SubResource("RectangleShape2D_4naa1")
+
+[node name="DialogueManager" type="Node2D" parent="window_interaction" node_paths=PackedStringArray("trigger")]
+script = ExtResource("4_s8x7u")
+entry_topic = &"start"
+dialogue_container = ExtResource("5_s8x7u")
+dialogue_box_scene = ExtResource("6_1elff")
+trigger = NodePath("../DialogueArea2D")
+metadata/_custom_type_script = "uid://vcl81unt6qpp"
+
+[node name="Npc" parent="." instance=ExtResource("3_1elff")]
+position = Vector2(706, 319)
+
+[node name="DialogueArea2D" type="Area2D" parent="Npc"]
+position = Vector2(-10, -4)
+script = ExtResource("7_1elff")
+interaction_hint = ExtResource("8_2uit2")
+hint_position_offset = Vector2(0, -20)
+metadata/_custom_type_script = "uid://cbiliyt80153u"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Npc/DialogueArea2D"]
+position = Vector2(0, 8)
+shape = SubResource("CircleShape2D_rewae")
+
+[node name="DialogueManager" type="Node2D" parent="Npc" node_paths=PackedStringArray("trigger")]
+script = ExtResource("4_s8x7u")
+entry_topic = &"start"
+one_time_dialogue = true
+dialogue_box_position_offset = Vector2(0, -20)
+dialogue_container = ExtResource("9_rewae")
+dialogue_box_scene = ExtResource("6_s8x7u")
+trigger = NodePath("../DialogueArea2D")
+metadata/_custom_type_script = "uid://vcl81unt6qpp"

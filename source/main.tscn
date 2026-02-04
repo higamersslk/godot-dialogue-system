@@ -153,10 +153,10 @@ metadata/_custom_type_script = "uid://vcl81unt6qpp"
 position = Vector2(706, 319)
 
 [node name="DialogueArea2D" type="Area2D" parent="Npc"]
-position = Vector2(-10, -4)
+position = Vector2(0, 9)
 script = ExtResource("7_1elff")
 interaction_hint = ExtResource("8_2uit2")
-hint_position_offset = Vector2(0, -20)
+hint_position_offset = Vector2(0, -30)
 metadata/_custom_type_script = "uid://cbiliyt80153u"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Npc/DialogueArea2D"]
@@ -167,7 +167,7 @@ shape = SubResource("CircleShape2D_rewae")
 script = ExtResource("4_s8x7u")
 entry_topic = &"start"
 one_time_dialogue = true
-dialogue_box_position_offset = Vector2(0, -20)
+dialogue_box_position_offset = Vector2(0, -30)
 dialogue_container = ExtResource("9_rewae")
 dialogue_box_scene = ExtResource("6_s8x7u")
 trigger = NodePath("../DialogueArea2D")

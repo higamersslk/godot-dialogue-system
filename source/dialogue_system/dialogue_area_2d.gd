@@ -12,11 +12,12 @@ signal player_left_dialogue_area
 
 var player_is_inside_area: bool
 
-var _interaction_hint_ref: TouchScreenButton
+var _hint_ref: TouchScreenButton
 var _player_ref: Player
 
 
 func _ready() -> void:
+	_instantiate_hint()
 	body_entered.connect(_on_body_entered)
 	body_exited.connect(_on_body_exited)
 
@@ -47,16 +48,19 @@ func _on_body_exited(body: Node) -> void:
 	hide_interaction_hint()
 
 
-func show_interaction_hint() -> void:
+func _instantiate_hint() -> void:
 	if not interaction_hint: return
-	if not _interaction_hint_ref:
-		_interaction_hint_ref = interaction_hint.instantiate()
-		_interaction_hint_ref.global_position = self.position + hint_position_offset
-		add_child(_interaction_hint_ref)
-	
-	_interaction_hint_ref.visible = true
+	_hint_ref = interaction_hint.instantiate() as TouchScreenButton
+	_hint_ref.global_position += hint_position_offset
+	_hint_ref.hide()
+	add_child(_hint_ref)
+
+
+func show_interaction_hint() -> void:
+	if not _hint_ref: return
+	_hint_ref.visible = true
 
 
 func hide_interaction_hint() -> void:
-	if not _interaction_hint_ref: return
-	_interaction_hint_ref.visible = false
+	if not _hint_ref: return
+	_hint_ref.visible = false

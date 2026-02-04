@@ -1,0 +1,61 @@
+[gd_scene load_steps=3 format=3 uid="uid://cfdruqc4hmosh"]
+
+[ext_resource type="Script" uid="uid://xs6phn7rr8dh" path="res://source/dialogue_system/dialogue_box.gd" id="1_7rquu"]
+[ext_resource type="Texture2D" uid="uid://dje1ux65kgdt1" path="res://assets/UI/button.png" id="2_t1ane"]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+
+[node name="DialogueTextBox" type="Control" parent="." node_paths=PackedStringArray("dialogue_label")]
+layout_mode = 3
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -500.0
+offset_top = -171.0
+offset_right = 500.0
+offset_bottom = -36.0
+grow_horizontal = 2
+grow_vertical = 0
+script = ExtResource("1_7rquu")
+dialogue_label = NodePath("MarginContainer/MarginContainer/DialogueLabel")
+metadata/_custom_type_script = "uid://xs6phn7rr8dh"
+
+[node name="MarginContainer" type="MarginContainer" parent="DialogueTextBox"]
+clip_contents = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1, 1.0482)
+size_flags_vertical = 8
+
+[node name="NinePatchRect" type="NinePatchRect" parent="DialogueTextBox/MarginContainer"]
+layout_mode = 2
+texture = ExtResource("2_t1ane")
+region_rect = Rect2(0, 0, 48, 48)
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16
+
+[node name="MarginContainer" type="MarginContainer" parent="DialogueTextBox/MarginContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="DialogueLabel" type="RichTextLabel" parent="DialogueTextBox/MarginContainer/MarginContainer"]
+layout_mode = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 32
+bbcode_enabled = true
+text = "Placeholder text"
+scroll_active = false
+autowrap_mode = 1
+horizontal_alignment = 1
+vertical_alignment = 1

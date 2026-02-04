@@ -1,5 +1,5 @@
 class_name DialogueTextBox
-extends Control
+extends Control ## Can also be a NODE. Control Node for UI clarification.
 
 
 signal text_finished

@@ -118,13 +118,6 @@ func switch_topic(topic_id: StringName) -> void:
 	_nodes = _topics_data[topic_id]
 
 
-func execute_method(method_name: String, args: Array) -> void:
-	if not registered_functions.has(method_name): return
-	var method: Callable = registered_functions[method_name]
-	if method.is_valid():
-		method.callv(args)
-
-
 func end_dialogue() -> void:
 	_dialogue_finished = true
 	is_chatting = false

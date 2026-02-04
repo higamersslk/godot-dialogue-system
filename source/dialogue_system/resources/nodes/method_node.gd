@@ -6,6 +6,13 @@ extends DialogueNode
 @export var arguments: PackedStringArray
 
 
-func execute(manager: DialogueManager) -> void:
-    manager.execute_method(method_name, arguments)
+func execute(_manager: DialogueManager) -> void:
+    execute_method()
     finished.emit()
+
+
+func execute_method() -> void:
+    if not DialogueManager.registered_functions.has(method_name): return
+    var method: Callable = DialogueManager.registered_functions[method_name]
+    if method.is_valid():
+        method.callv(arguments)

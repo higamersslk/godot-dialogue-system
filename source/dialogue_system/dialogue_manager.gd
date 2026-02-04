@@ -29,7 +29,7 @@ var _nodes: Array
 var is_chatting: bool
 var _dialogue_finished: bool
 
-static var registered_functions: Array[Callable]
+static var registered_functions: Dictionary[String, Callable]
 
 
 func _ready() -> void:
@@ -118,6 +118,13 @@ func switch_topic(topic_id: StringName) -> void:
 	_nodes = _topics_data[topic_id]
 
 
+func execute_method(method_name: String, args: Array) -> void:
+	if not registered_functions.has(method_name): return
+	var method: Callable = registered_functions[method_name]
+	if method.is_valid():
+		method.callv(args)
+
+
 func end_dialogue() -> void:
 	_dialogue_finished = true
 	is_chatting = false
@@ -152,11 +159,11 @@ func clean_up_signals() -> void:
 		continue_next.disconnect(connection.callable)
 
 
-static func subscribe(function: Callable) -> void:
-	if registered_functions.has(function): return
-	registered_functions.append(function)
+static func subscribe(method_name: String, method: Callable) -> void:
+	if registered_functions.has(method_name): return
+	registered_functions.set(method_name, method)
 
 
-static func unsubscribe(function: Callable) -> void:
-	if not registered_functions.has(function): return
-	registered_functions.erase(function)
+static func unsubscribe(method_name: String) -> void:
+	if not registered_functions.has(method_name): return
+	registered_functions.erase(method_name)

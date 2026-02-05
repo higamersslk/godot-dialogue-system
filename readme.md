@@ -22,11 +22,11 @@ To use this system:
 
 1. Download or clone this repository.
 2. Copy the `/dialogue-system` folder into your Godot project.
-3. Done! You’re ready to use it.
+3. Done :) You’re ready to use it.
 
 ---
 <details>
-<summary><h2>Quick Setup</summary>
+<summary><h2>Quick Setup</h2></summary>
 
 ### 1. Create a `DialogueContainer` resource
 
@@ -148,6 +148,27 @@ Changes the current dialogue topic to another topic or node position.
 **Inspector Properties:**
 - `goto_id` – Target topic ID
 - `goto_index` – Target node index (0 keeps current flow)
+
+</details>
+
+<details>
+<summary>
+  <h3>DialogueMethodNode</h3>
+</summary>
+
+Executes a callable during the dialogue.
+
+This node is useful for triggering gameplay logic such as:
+- Starting a quest
+- Playing animations or sounds
+- Displaying shop UI
+
+**Features:**
+- Executes custom logic without breaking the conversation
+
+**Inspector Properties:**
+- `method_name` – Name of the registered method to execute
+- `arguments` – Optional arguments passed to the method (if supported)
 
 </details>
 

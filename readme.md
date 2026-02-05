@@ -3,15 +3,15 @@
 A flexible, resource-based dialogue system for **Godot 4**, featuring multi-language support and rich BBCode styling.
 
 ## Features
-- [x] **Multi-language support** – CSV-based localization system  
-- [x] **BBCode styling** – Rich text with colors and effects  
-- [x] **DialogueArea2D** – Proximity-based interaction triggers  
-- [x] **Topic system** – Multiple conversations per dialogue container  
-- [x] **Extensible node system** – Easy to create custom dialogue nodes  
+- [x] **Multi-language support**
+- [x] **BBCode styling**
+- [x] **DialogueArea2D trigger**
+- [x] **Topic system**
+- [x] **Extensible node system**
 - [x] **Support for multiple text boxes**  
 - [ ] **Mobile support**
-- [ ] **Godot Graph Plugin** - for easy dialogue creation
-- [ ] **Play audios for texts** - designed, yet not implemented
+- [ ] **Godot Graph Plugin**
+- [ ] **Play audios for texts**
 - [ ] **DialogueConditionNode**
 
 ---
